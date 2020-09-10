@@ -21,7 +21,7 @@
 									<a href="index.html" class="logo"><strong>STEM</strong> home</a>
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="https://www.facebook.com/ilovestem.academy" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
 										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
 										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
@@ -36,7 +36,7 @@
 											Academy</h1>
                                             <p>"Велич людини в її здатності мислити."</p>
 										</header>
-										<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+										<p>STEM (Science, Technology, Engineering and Mathematics) — наука, технології, інженерія, математика. Цим терміном традиційно окреслюють підхід до освітнього процесу, відповідно до якого основою набуття знань є проста та доступна візуалізація наукових явищ, що дає змогу легко охопити і здобути знання на основі практики та глибокого розуміння процесів.</p>
 										<ul class="actions">
 											<li><a href="#" class="button big">Дізнатися більше</a></li>
 										</ul>
@@ -56,7 +56,7 @@
 											<span class="icon fa-gem"></span>
 											<div class="content">
 												<h3>Цінність знань</h3>
-												<p>Знання це важливий чинник </p>
+												<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
 											</div>
 										</article>
 										<article>
@@ -87,7 +87,7 @@
 								<!-- Section -->
 								<section>
 									<header class="major">
-										<h2>Крайні новини</h2>
+										<h2>Новини</h2>
 									</header>
 									<div class="posts">
                                         {% for article in latest_article_list %}
@@ -121,82 +121,76 @@
 								</section>
 
 							<!-- Menu -->
-                            <nav id="menu">
-                                <header class="major">
-                                    <h2>Меню</h2>
-                                </header>
-                                <ul>
-                                    <li><a href="index.html">Головна</a></li>
-                                    <li><a href="generic.html">Блог</a></li>
-                                    <li><a href="elements.html">Події</a></li>
-                                    <li>
-                                        <span class="opener">Кабінети</span>
-                                        <ul>
-                                            <li><a href="#">Lorem Dolor</a></li>
-                                            <li><a href="#">Ipsum Adipiscing</a></li>
-                                            <li><a href="#">Tempus Magna</a></li>
-                                            <li><a href="#">Feugiat Veroeros</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Особистий кабінет</a></li>
-                                    <li><a href="#">Пройти тестування</a></li>
-                                    <li>
-                                        <span class="opener">Про нас</span>
-                                        <ul>
-                                            <li><a href="#">Про STEM</a></li>
-                                            <li><a href="#">Про Випускників</a></li>
-                                            <li><a href="#">Про Викладачів</a></li>
-                                            <li><a href="#">Feugiat Veroeros</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Maximus Erat</a></li>
-                                    <li><a href="#">Sapien Mauris</a></li>
-                                    <li><a href="#">Amet Lacinia</a></li>
-                                </ul>
-                            </nav>
+							<nav id="menu">
+								<header class="major">
+									<h2>Меню</h2>
+								</header>
+								<ul>
+									<li><a href="{% url 'main' %}">Головна</a></li>
+									<li><a href="{% url 'blog' %}">Блог</a></li>
+									<li><a href="elements.html">Події</a></li>
+									<li>
+										<span class="opener">Кабінети</span>
+										<ul>
+											<li><a href="#">Кабінет Учня</a></li>
+											<li><a href="#">Кабінет Викладача</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Пройти тестування</a></li>
+									<li>
+										<span class="opener">Про нас</span>
+										<ul>
+											<li><a href="#">Про STEM</a></li>
+											<li><a href="{% url 'alumnis' %}">Наші випускники</a></li>
+											<li><a href="{% url 'teachers' %}">Наші викладачі</a></li>
+										</ul>
+									</li>
+									
+								</ul>
+							</nav>
 
 							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Ante interdum</h2>
-									</header>
-									<div class="mini-posts">
-										<article>
-											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-									</div>
-									<ul class="actions">
-										<li><a href="#" class="button">More</a></li>
-									</ul>
-								</section>
+							<section>
+								<header class="major">
+									<h2>Останні дописи блогу</h2>
+								</header>
+								<div class="mini-posts">
+									<article>
+										<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
+										<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+									</article>
+									<article>
+										<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+										<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+									</article>
+									<article>
+										<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+										<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+									</article>
+								</div>
+								<ul class="actions">
+									<li><a href="#" class="button">More</a></li>
+								</ul>
+							</section>
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-										<li class="icon solid fa-phone">(000) 000-0000</li>
-										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
-										Nashville, TN 00000-0000</li>
-									</ul>
-								</section>
+						<!-- Section -->
+							<section>
+								<header class="major">
+									<h2>Є запитання?</h2>
+								</header>
+								<p>Ми завжди готові відповісти на ваші запитання і будемо раді відгукам!<br>24/7</p>
+								<ul class="contact">
+									<li class="icon solid fa-envelope"><a href="#">miki.mask100@gmail.com</a></li>
+									<li class="icon solid fa-phone">(+380) 095-866-5393</li>
+									<li class="icon solid fa-home">0000 вул.Шевченка #3500<br />
+									Львів, TN 00000-0000</li>
+								</ul>
+							</section>
 
 							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
+							<footer id="footer">
+								<p class="copyright">&copy;Всі права захищено. Власник: STEM Academy. <a href="https://unsplash.com">STEM</a>. Architecture: <a href="https://www.facebook.com/KorchovskyiOleh">Oleg Korchovsky</a>.</p>
+							</footer>
 
 						</div>
 					</div>
