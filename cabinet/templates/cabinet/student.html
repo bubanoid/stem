@@ -18,26 +18,24 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="{% url 'student' %}" class="logo"><strong>STEM</strong> Student</a>
+									<a href="#" class="logo"><strong>STEM</strong> Student</a>
 								</header>
 
                             <!-- Content -->
                             {% if user.is_authenticated %}
 								<section>
-                                {% for s in student_info %}
 									<header class="main">
-										<h1>{{ s.name }}</h1>
+										<h1>{{ student.name }}</h1>
 									</header>
 
 									<span class="image main"><img src="{{article.image.url}}" alt="" /></span>
-									<p>{{article.text}}</p>
+									<p>{{student.about}}</p>
 									<hr class="major" />
 									{% for tag in article.article_tag.all %}
 										<i>{{tag.tag}}</i>
 									{% endfor %}
                                     <h3>{{article.author}}</h3>
                                     <p>{{article.pub_date}}</p>
-                                {% endfor %}
                                 </section>
                             {%else%}
                                 <h2>Ви не пройшли авторизацію на порталі</h2>
