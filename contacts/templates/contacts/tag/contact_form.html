@@ -1,0 +1,16 @@
+<form method="post" action="{% url 'contact' %}">
+    <div class="row gtr-uniform">
+        
+        <div class="col-6 col-12-xsmall">
+            {% csrf_token %}
+            {{contact_form}}
+        </div>
+            
+            <!-- Break -->
+            <div class="col-12">
+                <ul class="actions">
+                    <li><input type="submit" value="Зареєструватися" class="primary" /></li>
+                </ul>
+            </div>
+        </div>
+</form>

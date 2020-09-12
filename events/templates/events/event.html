@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+{% load static %}
+{% load contact_tags %}
+<html>
+	<head>
+		<title>{{event.name}}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>STEM</strong> Події</a>
+									<ul class="icons">
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="{{event.fb.event}}" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>{{event.name}}</h1>
+									</header>
+                                    
+                                    <span class="image main"><img src="{{ event.top_image.url }}" alt="" /></span>
+                                    {% for tag in event.tags.all %}
+										<i>{{tag.tag}}</i>
+									{% endfor %}
+                                    <p>{{event.description}}</p>
+                                    <p>Час проведення: {{event.date}}</p>
+                                        <section>
+                                            <header class="major">
+                                                <h2>Партнери події</h2>
+                                            </header>
+                                            <div class="posts">
+                                                {% for p in event.partner.all %}
+                                                <article>
+                                                    <a href="{{ p.link }}" class="image"><img src="{{ p.image.url }}" alt="" /></a>
+                                                    <h3>{{p.name}}</h3>
+                                                    <p>{{p.description}}</p>
+                                                </article>
+                                                {% endfor %}
+                                                
+                                            </div>
+                                        </section>
+                                    
+                                    <hr class="major" />
+									<h3>Форма реєстрації</h3>
+
+									{% contact_form %}
+
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+							<nav id="menu">
+								<header class="major">
+									<h2>Меню</h2>
+								</header>
+								<ul>
+									<li><a href="{% url 'main' %}">Головна</a></li>
+									<li><a href="{% url 'blog' %}">Блог</a></li>
+									<li><a href="elements.html">Події</a></li>
+									<li>
+										<span class="opener">Кабінети</span>
+										<ul>
+											<li><a href="#">Кабінет Учня</a></li>
+											<li><a href="#">Кабінет Викладача</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Пройти тестування</a></li>
+									<li>
+										<span class="opener">Про нас</span>
+										<ul>
+											<li><a href="#">Про STEM</a></li>
+											<li><a href="{% url 'alumnis' %}">Наші випускники</a></li>
+											<li><a href="{% url 'teachers' %}">Наші викладачі</a></li>
+										</ul>
+									</li>
+									
+								</ul>
+							</nav>
+								
+								<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Є запитання?</h2>
+									</header>
+									<p>Ми завжди готові відповісти на ваші запитання і будемо раді відгукам!</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#">miki.mask100@gmail.com</a></li>
+										<li class="icon solid fa-phone">(+380) 095-866-5393</li>
+										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
+										Nashville, TN 00000-0000</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy;Всі права захищено. Власник: STEM Academy. <a href="https://unsplash.com">STEM</a>. Architecture: <a href="https://html5up.net">Oleg Korchovsky</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/browser.min.js' %}"></script>
+		<script src="{% static 'js/breakpoints.min.js' %}"></script>
+		<script src="{% static 'js/util.js' %}"></script>
+		<script src="{% static 'js/main.js' %}"></script>
+
+	</body>
+</html>

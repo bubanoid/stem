@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+	<head>
+		<title>STEM Кабінет</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="{% url 'student' %}" class="logo"><strong>STEM</strong> Student</a>
+								</header>
+
+                            <!-- Content -->
+                            {% if user.is_authenticated %}
+								<section>
+                                {% for s in student_info %}
+									<header class="main">
+										<h1>{{ s.name }}</h1>
+									</header>
+
+									<span class="image main"><img src="{{article.image.url}}" alt="" /></span>
+									<p>{{article.text}}</p>
+									<hr class="major" />
+									{% for tag in article.article_tag.all %}
+										<i>{{tag.tag}}</i>
+									{% endfor %}
+                                    <h3>{{article.author}}</h3>
+                                    <p>{{article.pub_date}}</p>
+                                {% endfor %}
+                                </section>
+                            {%else%}
+                                <h2>Ви не пройшли авторизацію на порталі</h2>
+                            {% endif %}
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+							<nav id="menu">
+								<header class="major">
+									<h2>Меню</h2>
+								</header>
+								<ul>
+									<li><a href="{% url 'main' %}">Головна</a></li>
+									<li><a href="{% url 'blog' %}">Блог</a></li>
+									<li><a href="elements.html">Події</a></li>
+									<li>
+										<span class="opener">Кабінети</span>
+										<ul>
+											<li><a href="#">Кабінет Учня</a></li>
+											<li><a href="#">Кабінет Викладача</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Пройти тестування</a></li>
+									<li>
+										<span class="opener">Про нас</span>
+										<ul>
+											<li><a href="#">Про STEM</a></li>
+											<li><a href="{% url 'alumnis' %}">Наші випускники</a></li>
+											<li><a href="{% url 'teachers' %}">Наші викладачі</a></li>
+										</ul>
+									</li>
+									
+								</ul>
+							</nav>
+								
+								<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Є запитання?</h2>
+									</header>
+									<p>Ми завжди готові відповісти на ваші запитання і будемо раді відгукам!</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#">miki.mask100@gmail.com</a></li>
+										<li class="icon solid fa-phone">(+380) 095-866-5393</li>
+										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
+										Nashville, TN 00000-0000</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy;Всі права захищено. Власник: STEM Academy. <a href="https://unsplash.com">STEM</a>. Architecture: <a href="https://html5up.net">Oleg Korchovsky</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/browser.min.js' %}"></script>
+		<script src="{% static 'js/breakpoints.min.js' %}"></script>
+		<script src="{% static 'js/util.js' %}"></script>
+		<script src="{% static 'js/main.js' %}"></script>
+
+	</body>
+</html>

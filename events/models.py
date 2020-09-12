@@ -43,16 +43,20 @@ class Event(models.Model):
     date = models.DateTimeField('Час початку', blank=True, null=True)
     tags = models.ManyToManyField(EventTag, related_name='event_tags', blank=True, null=True)
     images = models.ManyToManyField(EventImage, related_name='event_images', blank=True, null=True)
+    top_image = models.ImageField('Головне зображення події', upload_to='events/images', blank=True, null=True)
     partner = models.ManyToManyField(EventPartner, related_name='event_partner', blank=True, null=True)
     fb_event = models.CharField('Посилання на подію у fb', max_length=200, blank=True, null=True)
     slug = models.SlugField('Посилання')
+    conducted = models.BooleanField('Відбулася', default=False)
 
-    def conducted(self):
+    def conducted_event(self):
         import datetime
         if self.date > datetime.datetime.now:
-            return False
+            self.conducted = True
+            return self.conducted
         else:
-            return True
+            self.conducted = False
+            return self.conducted
 
     def __str__(self):
         return self.name

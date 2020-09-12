@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'main',
     'persons',
     'events',
+    'contacts',
 ]
 
 MIDDLEWARE = [

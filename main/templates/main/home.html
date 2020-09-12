@@ -97,9 +97,30 @@
 												{% for tag in article.article_tag.all %}
 													<i>{{tag.tag}}</i>
 												{% endfor %}
-											<p>{{article.text}}</p>
+											<p>{{article.text|truncatewords:15}}</p>
 											<ul class="actions">
 												<li><a href="/blog/{{ article.slug }}/" class="button">Більше</a></li>
+                                            </ul>
+                                        </article>
+                                        {% endfor %}
+										
+									</div>
+								</section>
+								<section>
+									<header class="major">
+										<h2>Події</h2>
+									</header>
+									<div class="posts">
+                                        {% for e in latest_events %}
+										<article>
+											<a href="/events/{{e.slug }}/" class="image"><img src="{{ e.top_image.url }}" alt="" /></a>
+											<h3>{{e.name}}</h3>
+												{% for tag in e.tags.all %}
+													<i>{{tag.tag}}</i>
+												{% endfor %}
+											<p>{{e.description|truncatewords:15}}</p>
+											<ul class="actions">
+												<li><a href="/events/{{ e.slug }}/" class="button">Більше</a></li>
                                             </ul>
                                         </article>
                                         {% endfor %}
@@ -128,7 +149,7 @@
 								<ul>
 									<li><a href="{% url 'main' %}">Головна</a></li>
 									<li><a href="{% url 'blog' %}">Блог</a></li>
-									<li><a href="elements.html">Події</a></li>
+									<li><a href="{% url 'events' %}">Події</a></li>
 									<li>
 										<span class="opener">Кабінети</span>
 										<ul>
@@ -152,24 +173,19 @@
 							<!-- Section -->
 							<section>
 								<header class="major">
-									<h2>Останні дописи блогу</h2>
+									<h2>Випадкові дописи блогу</h2>
 								</header>
+								{% for a in random_articles %}
 								<div class="mini-posts">
 									<article>
-										<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-										<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-									</article>
-									<article>
-										<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-										<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-									</article>
-									<article>
-										<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-										<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										<a href="blog/{{ a.slug }}" class="image"><img src="{{ a.image.url }}" alt="" /></a>
+										<h3>{{a.title}}</h3>
+										<p>{{a.text|truncatewords:7}}</p>
 									</article>
 								</div>
+								{% endfor %}
 								<ul class="actions">
-									<li><a href="#" class="button">More</a></li>
+									<li><a href="{% url 'blog' %}" class="button">Блог</a></li>
 								</ul>
 							</section>
 

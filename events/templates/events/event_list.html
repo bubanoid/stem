@@ -1,18 +1,10 @@
-<!-- {% if latest_article_list %}
-    <ul>
-    {% for article in latest_article_list %}
-        <li><a href="/blog/{{ article.slug }}/">{{ article.title }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %} -->
+
 {% load static %}
 <!DOCTYPE HTML>
 
 <html>
 	<head>
-		<title>Блог</title>
+		<title>Події</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
@@ -28,7 +20,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.html" class="logo"><strong>STEM</strong> blog</a>
+									<a href="index.html" class="logo"><strong>STEM</strong> events</a>
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -43,10 +35,10 @@
 									<div class="content">
 										<header>
 											<h1>STEM<br />
-											Новини нашої академії</h1>
-											<p>В цьому розділі ми описуємо цікаві моменти з життя STEMу</p>
+											Події нашої академії</h1>
+											<p>В цьому розділі ми пишемо про події STEMу</p>
 										</header>
-										<p>Тут буде написано суть блогу, так як воно є, але зараз я пишу цю велику заглушку, щоб перевірити роботу шрифтів і фону, буде багато букв</p>
+										<p>Тут будуть описані всі події, також ви зможете зареєструватися на них, заповнивши відповідну форму! Будемо раді бачити вас на наших івентах</p>
 										<ul class="actions">
 											<li><a href="{% url 'about' %}" class="button big">Дізнатися більше!</a></li>
 										</ul>
@@ -59,19 +51,41 @@
 							<!-- Section -->
 								<section>
 									<header class="major">
-										<h2>Статті</h2>
+										<h2>Події, на які ви ще встигаєте:)</h2>
 									</header>
 									<div class="posts">
-                                        {% for article in latest_article_list %}
+                                        {% for event in new_event_list %}
 										<article>
-											<a href="/blog/{{ article.slug }}/" class="image"><img src="{{ article.image.url }}" alt="" /></a>
-											<h3>{{article.title}}</h3>
-												{% for tag in article.article_tag.all %}
+											<a href="/events/{{ event.slug }}/" class="image"><img src="{{ event.top_image.url }}" alt="" /></a>
+											<h3>{{event.name}}</h3>
+												{% for tag in event.tags.all %}
 													<i>{{tag.tag}}</i>
 												{% endfor %}
-											<p>{{article.text|truncatewords:15}}</p>
+											<p>{{event.description|truncatewords:15}}</p>
 											<ul class="actions">
-												<li><a href="/blog/{{ article.slug }}/" class="button">Більше</a></li>
+												<li><a href="/events/{{ event.slug }}/" class="button">Більше</a></li>
+                                            </ul>
+                                        </article>
+                                        {% endfor %}
+										
+									</div>
+								</section>
+								
+                                <section>
+									<header class="major">
+										<h2>Події, які вже відбулися</h2>
+									</header>
+									<div class="posts">
+                                        {% for event in old_event_list %}
+										<article>
+											<a href="/event/{{ event.slug }}/" class="image"><img src="{{ event.top_image.url }}" alt="" /></a>
+											<h3>{{event.name}}</h3>
+												{% for tag in event.tags.all %}
+													<i>{{tag.tag}}</i>
+												{% endfor %}
+											<p>{{event.description|truncatewords:15}}</p>
+											<ul class="actions">
+												<li><a href="/events/{{ event.slug }}/" class="button">Більше</a></li>
                                             </ul>
                                         </article>
                                         {% endfor %}
@@ -101,7 +115,7 @@
 								<ul>
 									<li><a href="{% url 'main' %}">Головна</a></li>
 									<li><a href="{% url 'blog' %}">Блог</a></li>
-									<li><a href="{% url 'events' %}">Події</a></li>
+									<li><a href="elements.html">Події</a></li>
 									<li>
 										<span class="opener">Кабінети</span>
 										<ul>

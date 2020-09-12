@@ -39,7 +39,7 @@ class StudentHW(models.Model):
         verbose_name = 'Домашня робота'
         verbose_name_plural = 'Домашні роботи'
 
-class StudentInfo(models.Model):
+class Student(models.Model):
     name = models.CharField('ПІБ студента', max_length=100)
     image = models.ImageField('Портретне фото студента', upload_to='images/student_profile_photo')
     slug = models.SlugField('Посилання на студента')
