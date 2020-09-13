@@ -39,6 +39,20 @@ class StudentHW(models.Model):
         verbose_name = 'Домашня робота'
         verbose_name_plural = 'Домашні роботи'
 
+
+
+class StudentSchedule(models.Model):
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, verbose_name='Предмет')
+    date = models.DateTimeField('Час уроку')
+
+    def __str__(self):
+        return self.subject
+
+    class Meta:
+        verbose_name = 'Розклад'
+        verbose_name_plural = 'Розклад'
+
+
 class Student(models.Model):
     name = models.CharField('ПІБ студента', max_length=100)
     image = models.ImageField('Портретне фото студента', upload_to='images/student_profile_photo')
@@ -53,6 +67,9 @@ class Student(models.Model):
     class Meta:
         verbose_name = 'Студент'
         verbose_name_plural = 'Студенти'
+
+
+
 
 
 
