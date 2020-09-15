@@ -24,29 +24,26 @@ class Subject(models.Model):
         verbose_name = 'Предмет'
         verbose_name_plural = 'Предмети'
 
-class StudentHW(models.Model):
-    subject = models.OneToOneField(Subject, on_delete=models.CASCADE)
-    name = models.CharField('Назва домашнього завдання', max_length=200)
-    student = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    done_task = models.FileField('Домашнє завдання', upload_to='homeworks/', blank=True, null=True)
-    passed = models.BooleanField('Здано', default=False)
-    pub_date = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Домашня робота'
-        verbose_name_plural = 'Домашні роботи'
-
 
 
 class StudentSchedule(models.Model):
+    WEEK = [
+        ('Понеділок', "Понеділок"),
+        ('Вівторок', 'Вівторок'),
+        ('Середа', 'Середа'),
+        ('Четвер', 'Четвер'),
+        ("П'ятниця","П'ятниця"),
+        ('Субота','Субота'),
+    ]
+    
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, verbose_name='Предмет')
-    date = models.DateTimeField('Час уроку')
+    date = models.TimeField('Час уроку')
+    teacher = models.ForeignKey(Teacher, verbose_name='Викладач', on_delete=models.CASCADE, blank=True, null=True )
+    week_day = models.CharField('День тижня', max_length=20, choices=WEEK, default='Mon')
+    group = models.ForeignKey(Group, verbose_name='Група', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.subject
+        return self.week_day
 
     class Meta:
         verbose_name = 'Розклад'
@@ -70,6 +67,21 @@ class Student(models.Model):
 
 
 
+class StudentHW(models.Model):
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    name = models.CharField('Назва домашнього завдання', max_length=200)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    done_task = models.FileField('Домашнє завдання', upload_to='homeworks/', blank=True, null=True, help_text='Залиште це поле пустим!')
+    passed = models.BooleanField('Здано', default=False)
+    pub_date = models.DateTimeField(auto_now_add=True)
+    mark = models.SmallIntegerField('Оцінка', default=5)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Журнал оцінок'
+        verbose_name_plural = 'Журнал оцінок'
 
 
 

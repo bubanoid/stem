@@ -25,60 +25,72 @@
                             {% if user.is_authenticated %}
 								<section>
 									<header class="main">
-										<h1>{{ student.name }}</h1>
+										<h1>{{ student.name }}</h1> 
+										<h3>{{student.group}}</h3>
 									</header>
-									<h3>{{student.group}}</h3>
+									
 									<span class="image left"><img src="{{student.image.url}}" alt="" /></span>
+									<h3>Відгук про студента</h3>
 									<p>{{ student.about }}</p>
 									<hr class="major" />
+
 									<h3>Розклад</h3>
-									<h4>Понеділок</h4>
 									<div class="table-wrapper">
+										
 										<table class="alt">
 											<thead>
 												<tr>
+													<th>День тижня</th>
+													<th>Час</th>
 													<th>Назва предмету</th>
 													<th>Викладач</th>
-													<th>Час</th>
+													
 												</tr>
 											</thead>
+										
 											<tbody>
-												<tr>
-													<td>Item1</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item2</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item3</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item4</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item5</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
+												{% for n in student_schedule %}
+													<tr>
+														<td>{{n.week_day}}</td>
+														<td>{{n.date}}</td>
+														<td>{{n.subject}}</td>
+														<td>{{n.teacher}}</td>
+													</tr>
+												{% endfor %}
 										</table>
 									</div>
-                                    <h3>{{article.author}}</h3>
-                                    <p>{{article.pub_date}}</p>
+									<hr>
+									
+									<h3>Щоденник</h3>
+									<table class="alt">
+										<thead>
+											<tr>
+												<th>Предмет</th>
+												<th>Завдання</th>
+												<th>Дата</th>
+												<th>Зараховано</th>
+												<th>Оцінка</th>
+												
+											</tr>
+										</thead>
+									
+										<tbody>
+											{% for hw in student_hw %}
+												<tr>
+													<td>{{hw.subject}}</td>
+													<td>{{hw.name}}</td>
+													<td>{{hw.pub_date}}</td>
+													{% if hw.passed == True %}
+														<td>+</td>
+													{% else %}
+														<td>-</td>
+													{% endif %}
+													<td>{{hw.mark}}</td>
+												</tr>
+											{% endfor %}
+									</table>
+
+
                                 </section>
                             {%else%}
                                 <h2>Ви не пройшли авторизацію на порталі</h2>
